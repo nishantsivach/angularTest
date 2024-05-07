@@ -28,7 +28,7 @@ export class AppComponent {
       console.log('Device motion events not supported');
     }
 
-    this.shakeEvent = new Shake({ threshold: 15, timeout: 1000 });
+    this.shakeEvent = new Shake({ threshold: 15 });
     this.shakeEvent.start();
     window.addEventListener('shake', () => this.handleShakeEvent(), false);
   }
