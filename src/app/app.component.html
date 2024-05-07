@@ -1,0 +1,33 @@
+<div class="page-wrapper">
+  <!-- Begin coding here -->
+  <div class="container">
+    <h2 class="page-title">Hello James</h2>
+
+    <div class="page-content"></div>
+
+    <input id="counter" type="text" name="counter" [value]="counter" />
+    <button (click)="handleClick()">check</button>
+    <lib-popup trigger="open-modal" [isOpen]="toggleModal" class="popp" [confirmButton]="'Send Feedback'"
+      [cancelButton]="'Cancel'">
+      <div class="wrapper">
+        <div style="display: flex; justify-content: center">
+          <img src="/assets/icons/shake-icon.svg" alt="shaked-icon" />
+        </div>
+        <div class="heading" style="display: flex; justify-content: center; color: #fff">
+          <h3>Go back to where you saw an issue and shake your phone</h3>
+        </div>
+        <div class="body" style="text-align: center; color: #fff">
+          <p>To help us find and fix the issue faster, you can shake your phone at the exact moment when you see a
+            problem.</p>
+          <div class="toggle-wrapper" style="display: flex; justify-content: center; gap: 40px">
+            <p>Shake phone to report problems</p>
+            <lib-toggle id="toggle-button-elem" [(toggleState)]="toggleState"
+              (toggleStateChange)="onToggleChange($event)" [style.background-color]="toggleState ? '#fe3c72' : ''"
+              style="height: 41px; border-radius: 30px"></lib-toggle>
+          </div>
+        </div>
+      </div>
+    </lib-popup>
+    <ion-button class="app-primary-button" (click)="this.toggleModal = !this.toggleModal">Send Feedback</ion-button>
+  </div>
+</div>

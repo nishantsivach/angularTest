@@ -1,0 +1,73 @@
+.page-wrapper {
+  height: 100%;
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    // padding: 24px;
+
+    .page-title {
+      color: var(--white-color);
+    }
+
+    .page-content {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .popp {
+    --width: 80%;
+
+    ion-modal#ion-overlay-1 {
+      --width: 80% !important;
+    }
+
+    .ion-page {
+      .popover-container {
+        .popup-wrapper {
+          color: #fff !important;
+
+          .image-container {
+            display: flex;
+            justify-content: center;
+          }
+
+          .heading {
+            color: #fff;
+
+            h3 {
+              color: var(--white-color);
+            }
+          }
+        }
+      }
+    }
+
+    :host(ion-modal) {
+      * {
+        background: green;
+      }
+
+      .image-container {
+        display: flex;
+        background: green;
+      }
+    }
+  }
+
+
+
+  .app-primary-button {
+    color: #fff;
+  }
+
+
+}
