@@ -34,15 +34,8 @@ export class AppComponent {
   }
   handleShakeEvent() {
     // Handle the shake event here
-    this.counter++;
     alert('Shake detected!');
   }
-  handleClick() {
-    alert("test")
-  }
-
-
-
 
   // handleShakeEvent() {
   //   // Your logic for handling the shake event
