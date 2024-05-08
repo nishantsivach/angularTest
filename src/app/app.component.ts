@@ -1,4 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { NgxCaptureService } from 'ngx-capture';
+import { tap } from 'rxjs';
 import Shake from 'shake.js';
 
 
@@ -11,41 +13,39 @@ export class AppComponent {
   toggleModal: boolean = false
   toggleState: boolean = true
   counter: number = 1;
+  img = '';
+  body = document.body;
   private shakeEvent: any;
   private lastAcceleration: DeviceMotionEventAcceleration;
   @ViewChild('dynamicModal', { static: true }) dynamicModal: ElementRef;
 
-  constructor() {
+  constructor(private captureService: NgxCaptureService) {
 
   }
 
   ngOnInit() {
-    if ('ondevicemotion' in window) {
-      // Browser supports the devicemotion event
-      console.log('Device motion events supported');
-    } else {
-      // Browser does not support the devicemotion event
-      console.log('Device motion events not supported');
-    }
+
 
     this.shakeEvent = new Shake({ threshold: 15 });
     this.shakeEvent.start();
     window.addEventListener('shake', () => this.handleShakeEvent(), false);
   }
   handleShakeEvent() {
-    // Handle the shake event here
     alert('Shake detected!');
+    this.fullCapture()
+
   }
-
-  // handleShakeEvent() {
-  //   // Your logic for handling the shake event
-  //   this.counter++;
-  //   console.log('Shake detected!');
-  // }
-  // ngOnDestroy() {
-  //   this.deviceMotion.clearWatchAcceleration();
-  // }
-
+  fullCapture() {
+    this.captureService
+      .getImage(this.body, true)
+      .pipe(
+        tap((img: string) => {
+          this.img = img;
+          console.log(img);
+        })
+      )
+      .subscribe();
+  }
 
   public handleModal() {
     this.toggleModal = !this.toggleModal
@@ -58,7 +58,6 @@ export class AppComponent {
   }
 
   ngOnDestroy() {
-
     this.shakeEvent.stop();
     window.removeEventListener('shake', this.handleShakeEvent.bind(this), false);
   }

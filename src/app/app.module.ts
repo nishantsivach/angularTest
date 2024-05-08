@@ -9,6 +9,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ButtonsModule, LibModalModule, ToggleModule } from 'nextsapien-component-lib';
 import { AppComponent } from './app.component';
 import { IonicModule } from '@ionic/angular';
+import { NgxCaptureModule } from 'ngx-capture';
 export const httpLoaderFactory = (http: HttpBackend): TranslateHttpLoader => new TranslateHttpLoader(new HttpClient(http), './assets/i18n/', '.json');
 
 @NgModule({
@@ -21,6 +22,7 @@ export const httpLoaderFactory = (http: HttpBackend): TranslateHttpLoader => new
     ButtonsModule,
     LibModalModule,
     ToggleModule,
+    NgxCaptureModule,
     IonicModule.forRoot(),
     TranslateModule.forRoot({
       defaultLanguage: 'en',

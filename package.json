@@ -27,6 +27,7 @@
     "@ngx-translate/http-loader": "^8.0.0",
     "nextsapien-component-lib": "^1.0.27",
     "ngx-bootstrap": "^12.0.0",
+    "ngx-capture": "^0.13.0",
     "rxjs": "~7.8.1",
     "shake.js": "^1.2.2",
     "tslib": "^2.6.2",
